@@ -194,10 +194,11 @@ sudo sed -i "s/#user = "root"/user = "$(id -un)"/g" /etc/libvirt/qemu.conf
 sudo sed -i "s/#group = "root"/group = "$(id -gn)"/g" /etc/libvirt/qemu.conf
 sudo usermod -a -G kvm $(id -un)
 sudo usermod -a -G libvirt $(id -un)
+mkdir -p ~/.config/libvirt
+echo "uri_default=\"qemu:///system\"" >> ~/.config/libvirt/libvirt.conf
 sudo systemctl restart libvirtd
-sudo ln -s /etc/apparmor.d/usr.sbin.libvirtd /etc/apparmor.d/disable/
 ```
 You will likely need to reboot to ensure your current shell is added to the group.
 
-
+### 
 
