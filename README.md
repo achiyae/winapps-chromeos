@@ -106,7 +106,7 @@ RDP_PASS="MyWindowsPassword"
 #RDP_DOMAIN="MYDOMAIN"
 #RDP_IP="192.168.123.111"
 #RDP_SCALE=100
-#RDP_FLAGS=""
+RDP_FLAGS="/drive:gdrive,/mnt/chromeos/GoogleDrive/"
 #MULTIMON="true"
 #DEBUG="true"
 ```
@@ -121,7 +121,12 @@ Options:
 - For multi-monitor setups, you can try enabling `MULTIMON`, however if you get a black screen (FreeRDP bug) you will need to revert back
 - If you enable `DEBUG`, a log will be created on each application start in `~/.local/share/winapps/winapps.log`
 
-### Step 4: Run the WinApps installer
+### Step 4: Share Google Drive directory with Windows folder
+In ChromeOS > Files application: 
+- Right-click on "Google Drive > My Drive" and select "Share with Linux".
+- Right-click on "Google Drive > Shared drives" and select "Share with Linux" (if you have shared drives).
+
+### Step 5: Run the WinApps installer
 Lastly, check that FreeRDP can connect with:
 ```
 bin/winapps check
