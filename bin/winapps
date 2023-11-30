@@ -97,7 +97,8 @@ elif [ "${1}" != "install" ]; then
 	fi
 	if [ -n "${2}" ]; then
 		dprint "HOME:${HOME}"
-		FILE=$(echo "${2}" | sed 's|'"${HOME}"'|\\\\tsclient\\home|;s|/|\\|g;s|\\|\\\\|g')
+		GDRIVE="/mnt/chromeos/GoogleDrive"
+		FILE=$(echo "${2}" | sed 's|'"${HOME}"'|\\\\tsclient\\home|;s|'"${GDRIVE}"'|\\\\tsclient\\gdrive|;s|/|\\|g;s|\\|\\\\|g')
 		dprint "FILE:${FILE}"
 		xfreerdp ${RDP_FLAGS} /d:"${RDP_DOMAIN}" /u:"${RDP_USER}" /p:"${RDP_PASS}" /v:${RDP_IP} +auto-reconnect +clipboard +home-drive -wallpaper /scale:${RDP_SCALE} /dynamic-resolution /${MULTI_FLAG} /wm-class:"${FULL_NAME}" /app:"${WIN_EXECUTABLE}" /app-icon:"${ICON}" /app-cmd:"\"${FILE}\"" 1> /dev/null 2>&1 &
 	else
